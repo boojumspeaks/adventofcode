@@ -13,7 +13,7 @@ def fuel_weight(w):
     return fuel_f
 
 def main():
-    with open("my_input") as f:
+    with open("input_day_1") as f:
         weight = f.readlines()
 
     # input is strings, convert to integers

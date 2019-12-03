@@ -2,7 +2,7 @@
 import math
 
 def main_for_loop():
-    with open("my_input") as f:
+    with open("input_day_1") as f:
         weight = f.readlines()
 
     value = 0
@@ -12,7 +12,7 @@ def main_for_loop():
     return int(value)
 
 def main():
-    with open("my_input") as f:
+    with open("input_day_1") as f:
         weight = f.readlines()
 
     # input is strings, convert to integers
@@ -28,7 +28,7 @@ def main():
     return ret_val
 
 def main_few_lines():
-    with open("my_input") as f:
+    with open("input_day_1") as f:
         return int(sum(map(lambda w: math.floor(int(w)/3) - 2, f.readlines())))
 
 if __name__ == "__main__":
