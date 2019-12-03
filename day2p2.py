@@ -1,20 +1,7 @@
 
-
-def main():
-    with open("input_day_2") as f:
-        opcodes = f.readline()
-
-
-    # set up commands
-    ops = opcodes.split(",")
-
-    intcode = map(int, ops)
+def intcode_interpreter(intcode):
 
     program_counter = 0
-
-    # modifications due to fire
-    intcode[1] = 12
-    intcode[2] = 2
 
     # main operation loop, add, multiply or halt
     while(intcode[program_counter] != 99):
@@ -55,6 +42,26 @@ def main():
             raise Exception("invalid opcode")
 
     return intcode
+
+def main():
+    with open("input_day_2") as f:
+        opcodes = f.readline()
+
+
+    # set up commands
+    ops = opcodes.split(",")
+
+    intcode = map(int, ops)
+
+
+    # modifications due to fire
+    intcode[1] = 12
+    intcode[2] = 2
+
+    result = intcode_interpreter(intcode)
+
+    return result
+
     
 
 
