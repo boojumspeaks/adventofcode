@@ -74,7 +74,7 @@ def test_data1():
 
     intersections = []
     for l in locs_11:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_12))
+        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs12))
         intersections = intersections + l_intersect
 
     print(intersections)
@@ -90,7 +90,7 @@ def test_data2():
 
     intersections = []
     for l in locs_21:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_22))
+        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs22))
         intersections = intersections + l_intersect
 
     print(intersections)
