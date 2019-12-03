@@ -7,6 +7,8 @@ def fuel_weight(w):
     if w/3 - 2 > 0:
         fuel_w = math.floor(w/3) - 2
         fuel_f = fuel_weight(fuel_w) + fuel_w
+    else:
+        fuel_f = 0
 
     return fuel_f
 
@@ -16,7 +18,6 @@ def main():
 
     # input is strings, convert to integers
     weight_i = map(int, weight)
-
 
     # perform the (floor(x/3)-2) operation
     fuel = map(fuel_weight, weight_i)
