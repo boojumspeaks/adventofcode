@@ -1,6 +1,7 @@
 
 import math
 
+
 def fuel_weight(w):
     fuel_f = 0
 
@@ -11,6 +12,7 @@ def fuel_weight(w):
         fuel_f = 0
 
     return fuel_f
+
 
 def main():
     with open("input_day_1") as f:
@@ -25,6 +27,7 @@ def main():
     total_fuel = sum(fuel)
 
     print(int(total_fuel))
+
 
 if __name__ == "__main__":
     main()

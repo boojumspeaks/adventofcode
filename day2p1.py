@@ -4,7 +4,6 @@ def main():
     with open("input_day_2") as f:
         opcodes = f.readline()
 
-
     # set up commands
     ops = opcodes.split(",")
 
@@ -55,8 +54,6 @@ def main():
             raise Exception("invalid opcode")
 
     return intcode
-    
-
 
 
 if __name__ == "__main__":

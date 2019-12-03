@@ -1,41 +1,42 @@
 
 def intcode_interpreter(intcode):
 
-    program_counter = 0
+    instruction_pointer = 0
 
     # main operation loop, add, multiply or halt
-    while(intcode[program_counter] != 99):
+    while(intcode[instruction_pointer] != 99):
 
         # Addition
-        if intcode[program_counter] == 1:
+        if intcode[instruction_pointer] == 1:
 
             # set up registers
-            register_1 = intcode[program_counter + 1]
-            register_2 = intcode[program_counter + 2]
-            location = intcode[program_counter + 3]
+            register_1 = intcode[instruction_pointer + 1]
+            register_2 = intcode[instruction_pointer + 2]
+            location = intcode[instruction_pointer + 3]
 
             value_1 = intcode[register_1]
             value_2 = intcode[register_2]
             intcode[location] = value_1 + value_2
 
-            program_counter = program_counter + 4
+            instruction_pointer = instruction_pointer + 4
 
         # multiplication
-        elif intcode[program_counter] == 2:
+        elif intcode[instruction_pointer] == 2:
 
             # set up registers
-            register_1 = intcode[program_counter + 1]
-            register_2 = intcode[program_counter + 2]
-            location = intcode[program_counter + 3]
+            register_1 = intcode[instruction_pointer + 1]
+            register_2 = intcode[instruction_pointer + 2]
+            location = intcode[instruction_pointer + 3]
 
             value_1 = intcode[register_1]
             value_2 = intcode[register_2]
             intcode[location] = value_1 * value_2
 
-            program_counter = program_counter + 4
+            instruction_pointer = instruction_pointer + 4
 
         # exit
-        elif intcode[program_counter] == 99:
+        elif intcode[instruction_pointer] == 99:
+            instruction_pointer = instruction_pointer + 1
             break
 
         else:
@@ -43,27 +44,28 @@ def intcode_interpreter(intcode):
 
     return intcode
 
+
 def main():
     with open("input_day_2") as f:
         opcodes = f.readline()
 
-
     # set up commands
     ops = opcodes.split(",")
 
-    intcode = map(int, ops)
-
+    intcode = list(map(int, ops))
 
     # modifications due to fire
-    intcode[1] = 12
-    intcode[2] = 2
+    for i in range(99):
+        for j in range(99):
+            intcode_test = intcode.copy()
+            intcode_test[1] = i
+            intcode_test[2] = j
 
-    result = intcode_interpreter(intcode)
+            result = intcode_interpreter(intcode_test)
+            if result[0] == 19690720:
+                print(100 * i + j)
 
     return result
-
-    
-
 
 
 if __name__ == "__main__":

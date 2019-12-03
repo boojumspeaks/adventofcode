@@ -1,6 +1,7 @@
 
 import math
 
+
 def main_for_loop():
     with open("input_day_1") as f:
         weight = f.readlines()
@@ -11,13 +12,13 @@ def main_for_loop():
 
     return int(value)
 
+
 def main():
     with open("input_day_1") as f:
         weight = f.readlines()
 
     # input is strings, convert to integers
     weight_i = map(int, weight)
-
 
     # perform the (floor(x/3)-2) operation
     fuel = map(lambda w: math.floor(w/3) - 2, weight_i)
@@ -27,9 +28,11 @@ def main():
     ret_val = (int(total_fuel))
     return ret_val
 
+
 def main_few_lines():
     with open("input_day_1") as f:
         return int(sum(map(lambda w: math.floor(int(w)/3) - 2, f.readlines())))
+
 
 if __name__ == "__main__":
     print("main normal")
