@@ -7,12 +7,7 @@ def main():
 
     locations = list(map(location_calculator, codes))
 
-    intersections = []
-    for l in locations[0]:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locations[1]))
-        intersections = intersections + l_intersect
-
-
+    intersections = filter(lambda x: x in locations[1], locations[0])
 
     distance = find_manhatten_min(intersections)
     print(distance)
@@ -29,26 +24,21 @@ def find_manhatten_min(intersections):
 def location_calculator(codes):
     x = 0
     y = 0
-    td = 0
     locations = []
 
     for (c, d) in codes:
         if c == 'U':
-            locations = locations + [(x, y + o, td + o) for o in range(d)]
+            locations = locations + [(x, y + o) for o in range(d)]
             y = y + d
-            td = td + 0
         elif c == 'D':
-            locations = locations + [(x, y - o, td + o) for o in range(d)]
+            locations = locations + [(x, y - o) for o in range(d)]
             y = y - d
-            td = td + 0
         elif c == 'R':
-            locations = locations + [(x + o, y, td + o) for o in range(d)]
+            locations = locations + [(x + o, y) for o in range(d)]
             x = x + d
-            td = td + 0
         elif c == 'L':
-            locations = locations + [(x - o, y, td + o) for o in range(d)]
+            locations = locations + [(x - o, y) for o in range(d)]
             x = x - d
-            td = td + 0
         else:
             raise Exception("invalid direction code")
 
@@ -72,12 +62,11 @@ def test_data1():
     locs_11 = location_calculator(val1_1)
     locs_12 = location_calculator(val1_2)
 
-    intersections = []
-    for l in locs_11:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_12))
-        intersections = intersections + l_intersect
+    intersections = filter(lambda x: x in locs_12, locs_11)
 
-    print(intersections)
+    distance = find_manhatten_min(intersections)
+    print(distance)
+
 
 def test_data2():
     # distance 135
@@ -88,15 +77,14 @@ def test_data2():
     locs_21 = location_calculator(val2_1)
     locs_22 = location_calculator(val2_2)
 
-    intersections = []
-    for l in locs_21:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_22))
-        intersections = intersections + l_intersect
+    intersections = filter(lambda x: x in locs_22, locs_21)
 
-    print(intersections)
-
+    distance = find_manhatten_min(intersections)
+    print(distance)
 
 
 
 if __name__ == "__main__":
     test_data1()
+    test_data2()
+    main()
