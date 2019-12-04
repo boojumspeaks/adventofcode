@@ -18,7 +18,8 @@ def main():
         if i in locations[1]:
             intersections.append(i)
 
-    distance = find_td_min(filter(lambda x: x != (0, 0), intersections), codes[0], codes[1])
+    distance = find_td_min(filter(
+        lambda x: x != (0, 0), intersections), codes[0], codes[1])
     print(distance)
 
 
@@ -28,8 +29,10 @@ def find_td_min(intersections, codes1, codes2):
 
     intersection_distances = []
     for i in intersections:
-        d1 = list(filter(lambda x: i[0] == x[0] and i[1] == x[1], distances_1))[0]
-        d2 = list(filter(lambda x: i[0] == x[0] and i[1] == x[1], distances_2))[0]
+        d1 = list(filter(
+            lambda x: i[0] == x[0] and i[1] == x[1], distances_1))[0]
+        d2 = list(filter(
+            lambda x: i[0] == x[0] and i[1] == x[1], distances_2))[0]
 
         intersection_distances.append(d1[2]+d2[2])
 
@@ -108,12 +111,13 @@ def test_data1():
 
     intersections = filter(lambda x: x in locs_12, locs_11)
 
-    distance = find_td_min(filter(lambda x: x != (0, 0), intersections), val1_1, val1_2)
+    distance = find_td_min(filter(
+        lambda x: x != (0, 0), intersections), val1_1, val1_2)
     print(distance)
 
 
 def test_data2():
-    # distance 410 
+    # distance 410
     val2_1 = code_parser("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51")
     val2_2 = code_parser("U98,R91,D20,R16,D67,R40,U7,R15,U6,R7")
 
@@ -122,7 +126,8 @@ def test_data2():
 
     intersections = filter(lambda x: x in locs_22, locs_21)
 
-    distance = find_td_min(filter(lambda x: x != (0, 0), intersections), val2_1, val2_2)
+    distance = find_td_min(filter(
+        lambda x: x != (0, 0), intersections), val2_1, val2_2)
     print(distance)
 
 
