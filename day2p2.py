@@ -65,9 +65,6 @@ def main():
             if result[0] == 19690720:
                 print(100 * i + j)
 
-    return result
-
 
 if __name__ == "__main__":
     result = main()
-    print(result[0])

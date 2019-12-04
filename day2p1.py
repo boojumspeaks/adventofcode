@@ -48,6 +48,7 @@ def main():
 
         # exit
         elif intcode[instruction_pointer] == 99:
+            instruction_pointer = instruction_pointer + 1
             break
 
         else:

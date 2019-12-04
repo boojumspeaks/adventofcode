@@ -7,7 +7,16 @@ def main():
 
     locations = list(map(location_calculator, codes))
 
-    intersections = filter(lambda x: x in locations[1], locations[0])
+    intersections = []
+    c = 0
+    for i in locations[0]:
+
+        c += 1
+        if c % 1000 == 0:
+            print(c)
+
+        if i in locations[1]:
+            intersections.append(i)
 
     distance = find_manhatten_min(intersections)
     print(distance)
