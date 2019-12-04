@@ -19,6 +19,7 @@ def main():
             intersections.append(i)
 
     distance = find_manhatten_min(intersections)
+    print("result")
     print(distance)
 
 

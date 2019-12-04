@@ -20,6 +20,8 @@ def main():
 
     distance = find_td_min(filter(
         lambda x: x != (0, 0), intersections), codes[0], codes[1])
+
+    print("result")
     print(distance)
 
 
