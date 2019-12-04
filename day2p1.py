@@ -15,7 +15,6 @@ def main():
 
     instruction_pointer = 0
 
-
     # main operation loop, add, multiply or halt
     while(intcode[instruction_pointer] != 99):
 
