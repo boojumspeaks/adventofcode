@@ -58,7 +58,6 @@ def test_data1():
     val1_1 = code_parser("R75,D30,R83,U83,L12,D49,R71,U7,L72")
     val1_2 = code_parser("U62,R66,U55,R34,D71,R55,D58,R83")
 
-
     locs_11 = location_calculator(val1_1)
     locs_12 = location_calculator(val1_2)
 
@@ -73,7 +72,6 @@ def test_data2():
     val2_1 = code_parser("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51")
     val2_2 = code_parser("U98,R91,D20,R16,D67,R40,U7,R15,U6,R7")
 
-
     locs_21 = location_calculator(val2_1)
     locs_22 = location_calculator(val2_2)
 
@@ -81,7 +79,6 @@ def test_data2():
 
     distance = find_manhatten_min(intersections)
     print(distance)
-
 
 
 if __name__ == "__main__":

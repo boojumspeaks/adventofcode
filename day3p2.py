@@ -8,22 +8,22 @@ def main():
     locations = list(map(location_calculator, codes))
 
     intersections = []
+    c = 0
     for l in locations[0]:
+        c += 1
+        if c % 1000 == 0:
+            print(c)
         l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locations[1]))
         intersections = intersections + l_intersect
 
+    distance = []
+    for l in intersections:
+        corr_int = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locations[0]))[0]
+        distance.append(corr_int)
 
 
-    distance = find_manhatten_min(intersections)
     print(distance)
-
-
-def find_manhatten_min(intersections):
-    values = map(lambda i: abs(i[0]) + abs(i[1]), intersections)
-    values_less_zero = filter(lambda x: x != 0, values)
-    min_intersection = min(values_less_zero)
-
-    return min_intersection
+    print(intersections)
 
 
 def location_calculator(codes):
@@ -36,19 +36,19 @@ def location_calculator(codes):
         if c == 'U':
             locations = locations + [(x, y + o, td + o) for o in range(d)]
             y = y + d
-            td = td + 0
+            td = td + d
         elif c == 'D':
             locations = locations + [(x, y - o, td + o) for o in range(d)]
             y = y - d
-            td = td + 0
+            td = td + d
         elif c == 'R':
             locations = locations + [(x + o, y, td + o) for o in range(d)]
             x = x + d
-            td = td + 0
+            td = td + d
         elif c == 'L':
             locations = locations + [(x - o, y, td + o) for o in range(d)]
             x = x - d
-            td = td + 0
+            td = td + d
         else:
             raise Exception("invalid direction code")
 
@@ -74,10 +74,14 @@ def test_data1():
 
     intersections = []
     for l in locs_11:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs12))
+        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_12))
         intersections = intersections + l_intersect
 
-    print(intersections)
+    for l in intersections:
+        corr_int = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_11))[0]
+        print(corr_int)
+        print(l)
+        print(corr_int[2] + l[2])
 
 def test_data2():
     # distance 135
@@ -90,13 +94,17 @@ def test_data2():
 
     intersections = []
     for l in locs_21:
-        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs22))
+        l_intersect = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_22))
         intersections = intersections + l_intersect
 
-    print(intersections)
+    for l in intersections:
+        corr_int = list(filter(lambda x: x[0] == l[0] and x[1] == l[1], locs_21))[0]
+        print(corr_int)
+        print(l)
+        print(corr_int[2] + l[2])
 
 
 
 
 if __name__ == "__main__":
-    test_data1()
+    main()

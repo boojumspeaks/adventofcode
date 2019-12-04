@@ -9,45 +9,46 @@ def main():
 
     intcode = map(int, ops)
 
-    program_counter = 0
-
     # modifications due to fire
     intcode[1] = 12
     intcode[2] = 2
 
+    instruction_pointer = 0
+
+
     # main operation loop, add, multiply or halt
-    while(intcode[program_counter] != 99):
+    while(intcode[instruction_pointer] != 99):
 
         # Addition
-        if intcode[program_counter] == 1:
+        if intcode[instruction_pointer] == 1:
 
             # set up registers
-            register_1 = intcode[program_counter + 1]
-            register_2 = intcode[program_counter + 2]
-            location = intcode[program_counter + 3]
+            register_1 = intcode[instruction_pointer + 1]
+            register_2 = intcode[instruction_pointer + 2]
+            location = intcode[instruction_pointer + 3]
 
             value_1 = intcode[register_1]
             value_2 = intcode[register_2]
             intcode[location] = value_1 + value_2
 
-            program_counter = program_counter + 4
+            instruction_pointer = instruction_pointer + 4
 
         # multiplication
-        elif intcode[program_counter] == 2:
+        elif intcode[instruction_pointer] == 2:
 
             # set up registers
-            register_1 = intcode[program_counter + 1]
-            register_2 = intcode[program_counter + 2]
-            location = intcode[program_counter + 3]
+            register_1 = intcode[instruction_pointer + 1]
+            register_2 = intcode[instruction_pointer + 2]
+            location = intcode[instruction_pointer + 3]
 
             value_1 = intcode[register_1]
             value_2 = intcode[register_2]
             intcode[location] = value_1 * value_2
 
-            program_counter = program_counter + 4
+            instruction_pointer = instruction_pointer + 4
 
         # exit
-        elif intcode[program_counter] == 99:
+        elif intcode[instruction_pointer] == 99:
             break
 
         else:
