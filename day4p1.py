@@ -4,7 +4,7 @@ def increasing(x):
     for i in range(len(str_x) - 1):
         if str_x[i] > str_x[i + 1]:
             return False
-    
+
     return True
 
 
@@ -17,7 +17,6 @@ def duplicate(x):
     return False
 
 
-
 def main():
     puzzle_input = range(245318, 765749)
 
@@ -26,7 +25,6 @@ def main():
 
     print((inc))
     print(len(inc))
-
 
 
 if __name__ == "__main__":
